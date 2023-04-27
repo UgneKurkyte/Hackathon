@@ -22,8 +22,9 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore
-      run: dotnet restore ./Application/Application.csproj
+      run: dotnet restore ./Application/RazorPagesTestSample.csproj
     - name: Build
-      run: dotnet build ./Application/Application.csproj --configuration Release
+      run: dotnet build ./Application/RazorPagesTestSample.csproj --configuration Release
     - name: Test
-      run: dotnet test ./Tests/Tests.csproj --configuration Release
+      run: dotnet test ./Tests/RazorPagesTestSample.csproj --configuration Release
+
