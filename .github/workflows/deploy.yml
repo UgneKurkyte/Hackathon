@@ -9,8 +9,8 @@ jobs:
       # Checkout code
     - uses: actions/checkout@main
   
-    - name: Set Environment Variable
       if: github.ref == 'refs/heads/main'
+      - name: Set Environment Variable
         run: echo "::set-env name=targetEnv::$(cat ./Bicep-Templates/main.bicep | grep 'webAppName' | cut -d "'" -f 2 | sed 's/-dev/-test/')"
       # Log into Azure
     - uses: azure/login@v1
