@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@main
     
     - name: Update Bicep file
-      run: sed -i "s/devops-${{ env.targetEnv }}/g" ./Bicep-Templates/main.bicep
+      run: sed -i "s/devops-test/devops-${{ env.targetEnv }}/g" ./Bicep-Templates/main.bicep
 
       
       # Log into Azure
