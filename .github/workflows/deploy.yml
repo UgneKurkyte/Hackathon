@@ -8,7 +8,10 @@ jobs:
 
       # Checkout code
     - uses: actions/checkout@main
-
+  
+    - name: Set Environment Variable
+      if: github.ref == 'refs/heads/main'
+        run: echo "::set-env name=targetEnv::$(cat ./Bicep-Templates/main.bicep | grep 'webAppName' | cut -d "'" -f 2 | sed 's/-dev/-test/')"
       # Log into Azure
     - uses: azure/login@v1
       with:
@@ -22,4 +25,6 @@ jobs:
         scope: subscription
         region: northeurope
         template: ./Bicep-Templates/main.bicep
+        overrideParameters: targetEnv=${{ env.targetEnv }}
+
 
