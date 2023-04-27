@@ -1,8 +1,24 @@
-name: Deploy 
-
-on:
-  push:
-    branches:
-      - main
+name: Deploy to Azure
+on: 
   workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Login via Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy ARM Template
+        uses: azure/ARM@v1
+        with:
+          resource-group: myResourceGroup
+          template: ./Bicep-Templates/container-webapp-template.bicep
+          parameters: ./Bicep-Templates/main.bicep
+
 
