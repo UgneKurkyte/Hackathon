@@ -1,7 +1,7 @@
 param location string = 'northeurope'
 param prefix string = 'telia'
 
-param webAppName string = '${prefix}devops-dev'
+param webAppName string = '${prefix}devops-test'
 param hostingPlanName string = '${prefix}devops-asp'
 param appInsightsName string = '${prefix}devops-ai'
 param sku string = 'S1'
